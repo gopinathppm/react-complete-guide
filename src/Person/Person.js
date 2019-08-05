@@ -9,8 +9,9 @@ const person = (props) => {
         }
     }
     const rnd = Math.random();
+    console.log(rnd);
 
-    if (rnd >0.6) {
+    if (rnd > 0.7) {
         throw new Error ('Somethin went wrong');
     }
     return (
