@@ -1,8 +1,9 @@
-import React , { useEffect , useRef } from 'react';
+import React , { useEffect , useRef, useContext } from 'react';
 import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
     const autoClickRef = useRef(null);
+    const authContext = useContext(AuthContext); 
 
     useEffect(() => {
 
@@ -47,10 +48,7 @@ const Cockpit = (props) => {
               ref = {autoClickRef}
             >Toggle Persons</button>
             <p className={classes.join(' ')}>Program to switch Persons</p>
-            <AuthContext.Consumer>
-              {context => <button onClick={context.login}>Authenticate</button>}
-            </AuthContext.Consumer>
-            
+            <button onClick={authContext.login}>Authenticate!</button>
       </div>
     )
 }

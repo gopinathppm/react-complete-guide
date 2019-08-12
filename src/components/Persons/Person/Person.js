@@ -12,9 +12,12 @@ constructor(props){
     super(props);
     this.inputElememtRef = React.createRef();
 }
+static contextType = AuthContext;
+
 componentDidMount(){
     this.inputElememtRef.current.focus();
     // this.inputElement.focus();
+    console.log(this.context.authenticated);
 }
 
     render(){
@@ -26,9 +29,7 @@ componentDidMount(){
         console.log('Persons.js function rendering...');
         return (
             <Aux className= "Person" style={style}>
-                <AuthContext.Consumer>
-                    {context => context.authenticated ? "Authenticated" : "Please login"}
-                </AuthContext.Consumer>
+               {(this.context.authenticated) ? "Authenticated" : "Please login"}
                 <p onClick = {this.props.click}>I am {this.props.name} and {this.props.age} years old </p>
                 <p>{this.props.children}</p>
                 <input type="text" 
